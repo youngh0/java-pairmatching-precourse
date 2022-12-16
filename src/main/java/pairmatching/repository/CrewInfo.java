@@ -3,13 +3,13 @@ package pairmatching.repository;
 import pairmatching.util.CrewInfoReader;
 
 import java.io.IOException;
+import java.util.EnumMap;
 
 public class CrewInfo {
-    private final BackendCrews backendCrews;
-    private final FrontCrews frontCrews;
+    private final EnumMap<Course, Crews> courseCrewInfo = new EnumMap<>(Course.class);
 
     public CrewInfo(CrewInfoReader crewInfoReader) throws IOException {
-        this.backendCrews = new BackendCrews(crewInfoReader.readBackEndCrew());
-        this.frontCrews = new FrontCrews(crewInfoReader.readFrontEndCrew());
+        courseCrewInfo.put(Course.BACKEND,new BackendCrews(crewInfoReader.readBackEndCrew()));
+        courseCrewInfo.put(Course.FRONTEND, new FrontCrews(crewInfoReader.readFrontEndCrew()));
     }
 }
