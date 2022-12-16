@@ -27,4 +27,8 @@ public enum Mission {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 미션입니다."));
         return true;
     }
+
+    public Level getLevel() {
+        return level;
+    }
 }
